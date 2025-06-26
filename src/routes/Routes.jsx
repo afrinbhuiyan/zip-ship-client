@@ -5,6 +5,7 @@ import Home from "../pages/Home/Home/Home";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Auth/Login/Login";
 import Register from "../pages/Auth/Register/Register";
+import Coverage from "../pages/Coverage/Coverage";
 
 export const router = createBrowserRouter([
   {
@@ -14,8 +15,14 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        Component: Home
       },
+      {
+        path: "coverage",
+        Component: Coverage,
+        loader: () => fetch("./serviceCenter.json"),
+        hydrateFallbackElement: <p>Loading......</p>
+      }
     ],
   },
   {
